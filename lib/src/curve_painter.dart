@@ -22,18 +22,6 @@ class _CurvePainter extends CustomPainter {
         appearance.progressBarWidth * 0.5;
     center = Offset(size.width / 2, size.height / 2);
 
-    final trackPaint = Paint()
-      ..strokeCap = StrokeCap.round
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = appearance.trackWidth
-      ..color = appearance.trackColor;
-    drawCircularArc(
-        canvas: canvas,
-        size: size,
-        paint: trackPaint,
-        ignoreAngle: true,
-        spinnerMode: appearance.spinnerMode);
-
     if (!appearance.hideShadow) {
       drawShadow(canvas: canvas, size: size);
     }
@@ -51,7 +39,19 @@ class _CurvePainter extends CustomPainter {
       ..strokeCap = StrokeCap.round
       ..style = PaintingStyle.stroke
       ..strokeWidth = appearance.progressBarWidth;
-    drawCircularArc(canvas: canvas, size: size, paint: progressBarPaint);
+    drawCircularArc(canvas: canvas, size: size, paint: progressBarPaint,ignoreAngle: true,);
+
+    final trackPaint = Paint()
+      ..strokeCap = StrokeCap.round
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = appearance.trackWidth
+      ..color = appearance.trackColor;
+    drawCircularArc(
+        canvas: canvas,
+        size: size,
+        paint: trackPaint,
+        ignoreAngle: true,
+        spinnerMode: appearance.spinnerMode);
 
     var dotPaint = Paint()..color = appearance.dotColor;
 

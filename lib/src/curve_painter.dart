@@ -22,6 +22,7 @@ class _CurvePainter extends CustomPainter {
         appearance.progressBarWidth * 0.5;
     center = Offset(size.width / 2, size.height / 2);
 
+
     if (!appearance.hideShadow) {
       drawShadow(canvas: canvas, size: size);
     }
@@ -53,6 +54,7 @@ class _CurvePainter extends CustomPainter {
         ignoreAngle: true,
         spinnerMode: appearance.spinnerMode);
 
+
     var dotPaint = Paint()..color = appearance.dotColor;
 
     final currentAngle = appearance.counterClockwise ? -angle : angle;
@@ -64,10 +66,10 @@ class _CurvePainter extends CustomPainter {
 
   drawCircularArc(
       {@required Canvas canvas,
-      @required Size size,
-      @required Paint paint,
-      bool ignoreAngle = false,
-      bool spinnerMode = false}) {
+        @required Size size,
+        @required Paint paint,
+        bool ignoreAngle = false,
+        bool spinnerMode = false}) {
     final double angleValue = ignoreAngle ? 0 : (angleRange - angle);
     final range = appearance.counterClockwise ? -angleRange : angleRange;
     final currentAngle = appearance.counterClockwise ? angleValue : -angleValue;
@@ -83,7 +85,7 @@ class _CurvePainter extends CustomPainter {
     final shadowStep = appearance.shadowStep != null
         ? appearance.shadowStep
         : math.max(
-            1, (appearance.shadowWidth - appearance.progressBarWidth) ~/ 10);
+        1, (appearance.shadowWidth - appearance.progressBarWidth) ~/ 10);
     final maxOpacity = math.min(1.0, appearance.shadowMaxOpacity);
     final repetitions = math.max(1,
         ((appearance.shadowWidth - appearance.progressBarWidth) ~/ shadowStep));
